@@ -1,0 +1,19 @@
+<Page x:Class="WPF_CRUD.AboutPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="About">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20">
+                About This Application
+            </TextBlock>
+            <TextBlock FontSize="14" HorizontalAlignment="Center" TextWrapping="Wrap" Width="400">
+                WPF Media Player Application
+                <LineBreak/>Version: 1.0.0
+                <LineBreak/>Built with .NET Framework 4.7.2
+                <LineBreak/><LineBreak/>
+                This application demonstrates Frame and Page navigation in WPF.
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</Page>

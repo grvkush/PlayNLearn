@@ -1,0 +1,36 @@
+﻿<Page x:Class="WPF_CRUD.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPF_CRUD"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"	  
+      Title="Settings">
+
+        <Grid Margin="20">
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+
+                <!-- Source Image -->
+                <Image x:Name="SourceImage"
+                   Width="150"
+                   Height="150"
+                   Margin="10"
+                   Source="/Images/Matras/Aa.png"
+                   MouseMove="SourceImage_MouseMove"/>
+
+                <!-- Target Image -->
+                <Image x:Name="TargetImage"
+                   Width="150"
+                   Height="150"
+                   Margin="10"
+                   Source="/Images/Matras/Aadha.png"
+                   AllowDrop="True"
+                   Drop="TargetImage_Drop"/>
+
+            </StackPanel>
+
+        </Grid>
+    
+</Page>

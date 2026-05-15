@@ -1,0 +1,16 @@
+<Page x:Class="WPF_CRUD.HomePage_Content"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Home">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20">
+                Welcome to WPF Application
+            </TextBlock>
+            <TextBlock FontSize="16" HorizontalAlignment="Center" TextWrapping="Wrap" Width="400" Margin="0,0,0,20">
+                This is the home page of the application. Use the navigation menu above to access different features.
+            </TextBlock>
+            <Image Source="/Images/home-icon.png" Width="100" Height="100" Margin="20"/>
+        </StackPanel>
+    </Grid>
+</Page>
