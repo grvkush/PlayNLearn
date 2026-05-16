@@ -63,9 +63,10 @@ namespace WPF_CRUD
         private void imgMain_Drop(object sender, DragEventArgs e)
         {
             DragData imageData = dragDropHelper.Control_Drop((FrameworkElement)sender, e);
-            if (imageData != null && imageData.dataType == "ImageData")
+            if (imageData != null && imageData.dataType == "ImageData" && DataContext is HindiWordsViewModel vm)
             {
-                imgMain.Source = new BitmapImage(new Uri(((ImageData)(imageData.data)).ImagePath, UriKind.Relative)); 
+                vm.UpdateMainImage((ImageData)imageData.data);
+                //imgMain.Source = new BitmapImage(new Uri(vm.MainImageData.ImagePath, UriKind.Relative)); 
             }
         }
 

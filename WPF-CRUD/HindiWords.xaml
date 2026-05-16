@@ -77,6 +77,7 @@
         </Grid>
         <!--#endregion-->
 
+        <!--#region Main Image region-->
             <Grid 
                 Grid.Row="1"
                 Grid.Column="0"
@@ -106,6 +107,7 @@
                                    TextAlignment="Center"
                                    Height="Auto" Width="Auto"/>
                         <Image Name="imgMain" 
+                               Source="{Binding Path=MainImage.ImagePath, Mode=TwoWay}"
                                Height="Auto" Width="Auto"
                                />
                     </Grid>
@@ -133,7 +135,7 @@
                             Grid.Row="0" 
                             Grid.Column="0" Grid.ColumnSpan="4"
                             Name="btnWord"  Content="{Binding Path=Word, Mode=TwoWay}"
-                            Command="{Binding Path=CopyToClipboard}"                                 
+                            Command="{Binding Path=CopyToClipboardCommand}"                                 
                             FontSize="75"  
                             Height="100" Width="435" 
                             HorizontalAlignment="Left"
@@ -143,13 +145,13 @@
                             Drop="btnWord_Drop"
                             />
 
-                <!--#region Click Buttons-->
+                    <!--#region Action Buttons-->
                         <Grid Grid.Row="1" Grid.Column="0" 
                               Grid.ColumnSpan="4"                             
                               >
-
                             <WrapPanel HorizontalAlignment="Center">       
                             <Button Name="btnCheck" Grid.Column="0" Margin="10,10,30,10"
+                                    Command="{Binding Path=CheckWordCommand}"
                                         Style="{StaticResource CircleButtonStyle}"   
                                         >
                                     <Image Width="30" 
@@ -166,7 +168,7 @@
                                 </Button>
 
                                 <Button Name="btnUndo" Grid.Column="2" Margin="30,10,30,10"
-                                        Command="{Binding Path=UndoHindiWord}"
+                                        Command="{Binding Path=UndoHindiWordCommand}"
                                         Style="{StaticResource CircleButtonStyle}" 
                                         >
                                     <Image Width="30" 
@@ -175,7 +177,7 @@
                                 </Button>
 
                                 <Button Name="btnReset" Grid.Column="3" Margin="30,10,10,10"
-                                        Command="{Binding Path=ResetHindiWord}"
+                                        Command="{Binding Path=ResetHindiWordCommand}"
                                         Style="{StaticResource CircleButtonStyle}" 
                                         >
                                     <Image Width="30" 
@@ -184,18 +186,16 @@
                                 </Button>
                             </WrapPanel>
                         </Grid>
-                        <!--#endregion-->
+                    <!--#endregion-->
 
                     </Grid>
                 </Grid>
 
                 <!--#endregion-->
 
-
-
             </Grid>
+        <!--#endregion-->
         
-
         <!--#region Consonants-->
             <Grid Grid.Row="1"
                   Grid.Column="3"
@@ -245,18 +245,13 @@
             </Grid>
         <!--#endregion-->
 
-            <!--#region Vowels-->
+        <!--#region Vowels-->
 
             <Grid 
                 Grid.Row="1"
                 Grid.Column="2"
-                Grid.RowSpan="2"            
-            >
-
-
-
-
-
+                Grid.RowSpan="2"
+                >
                 <WrapPanel Orientation="Vertical">
                     <TextBlock Text="स्वर (Vowels)" FontSize="20" Margin="10,10,0,0"/>
                     <ScrollViewer 
@@ -265,8 +260,7 @@
                     Width="230"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
-                        
-                    >
+                        >
                         <StackPanel Margin="20">
 
                             <ItemsControl ItemsSource="{Binding HindiVowels}">
@@ -305,15 +299,15 @@
 
 
             </Grid>
-            <!--#endregion-->
+        <!--#endregion-->
 
-
+        <!--#region Matras-->
             <Grid
                 Grid.Row="2"
                 Grid.Column="2"
                 Grid.ColumnSpan="4">
 
-                <!--#region Matras-->
+                
 
         
             <WrapPanel Orientation="Vertical">
@@ -361,15 +355,10 @@
                         </ItemsControl>                    
                 </ScrollViewer>
             </WrapPanel>
-        
 
+            </Grid>
         <!--#endregion-->
-
-        
-        
             
-        </Grid>
-        
     </Grid>
     </ScrollViewer>
 </Page>

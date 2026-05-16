@@ -32,7 +32,7 @@ namespace WPF_CRUD
         #endregion
         public HindiWordsViewModel()
         {
-            Word = "";
+            playSoundsHelper = new PlaySoundsHelper();
 
             HindiConsonants = new ObservableCollection<HindiLetter>()
             {
@@ -627,11 +627,22 @@ namespace WPF_CRUD
 
             SelectedCategory = ImageCategories.FirstOrDefault();
 
-            copyToClipboard = new RelayCommand(CopyToClipboardMethod);
-            resetHindiWord = new RelayCommand(ResetWord);
-            undoHindiWord = new RelayCommand(Undo);
+            Word = "";
+            MainImage = Images.FirstOrDefault();
 
+            copyToClipboardCommand = new RelayCommand(CopyToClipboardMethod);
+            resetHindiWordCommand = new RelayCommand(ResetWord);
+            undoHindiWordCommand = new RelayCommand(Undo);
+            checkWordCommand = new RelayCommand(CheckWord);
 
+        }
+
+        public void UpdateMainImage(ImageData imageData)
+        {
+            if (imageData != null)
+            {
+                MainImage = imageData;
+            }
         }
 
         public void Append(string text)
@@ -647,10 +658,10 @@ namespace WPF_CRUD
 
         #region CopyToClipboardCommand
 
-        private RelayCommand copyToClipboard;
-        public RelayCommand CopyToClipboard
+        private RelayCommand copyToClipboardCommand;
+        public RelayCommand CopyToClipboardCommand
         {
-            get { return copyToClipboard; }
+            get { return copyToClipboardCommand; }
         }
 
         public void CopyToClipboardMethod()
@@ -663,11 +674,11 @@ namespace WPF_CRUD
         #endregion
 
         #region ResetHindiWordCommand
-        private RelayCommand resetHindiWord;
+        private RelayCommand resetHindiWordCommand;
 
-        public RelayCommand ResetHindiWord
+        public RelayCommand ResetHindiWordCommand
         {
-            get { return resetHindiWord; }
+            get { return resetHindiWordCommand; }
         }
 
         private void ResetWord()
@@ -680,12 +691,11 @@ namespace WPF_CRUD
 
         #region UndoHindiWordCommand
 
-        private RelayCommand undoHindiWord;
+        private RelayCommand undoHindiWordCommand;
 
-        public RelayCommand UndoHindiWord
+        public RelayCommand UndoHindiWordCommand
         {
-            get { return undoHindiWord; }
-            set { undoHindiWord = value; }
+            get { return undoHindiWordCommand; }
         }
         private void Undo()
         {
@@ -694,6 +704,40 @@ namespace WPF_CRUD
                 Word = wordHistory.Pop();  
             }            
         }
+
+        #endregion
+
+        #region Check Word matches the image
+
+        private RelayCommand checkWordCommand;
+
+        public RelayCommand CheckWordCommand
+        {
+            get { return checkWordCommand; }
+        }
+
+        private void CheckWord()
+        {
+            if (MainImage != null && !String.IsNullOrEmpty(Word))
+            {
+                if (Word == MainImage.HindiName)
+                {
+                    playSoundsHelper.PlayCorrectSound();
+                    PopUpMessage.Show("Correct! The word matches the image.");
+                    
+                }
+                else
+                {
+                    playSoundsHelper.PlayWrongSound();
+                    PopUpMessage.Show("Incorrect. Try again!");                    
+                }
+            }
+            else
+            {
+                PopUpMessage.Show("Please select an image and enter a word.");
+            }
+        }
+
 
         #endregion
 
@@ -708,6 +752,15 @@ namespace WPF_CRUD
                 OnPropertyChanged("Word");
             }
         }
+
+        private ImageData mainImage;
+
+        public ImageData MainImage
+        {
+            get { return mainImage; }
+            set { mainImage = value; OnPropertyChanged("MainImage"); }
+        }
+
 
         private string selectedCategory;
         public string SelectedCategory
@@ -739,8 +792,7 @@ namespace WPF_CRUD
         public ObservableCollection<string> ImageCategories { get; set; }
 
         private Stack<string> wordHistory = new Stack<string>();
-        
-
+        PlaySoundsHelper playSoundsHelper;
 
         private ObservableCollection<ImageData> FilterImages()
         {

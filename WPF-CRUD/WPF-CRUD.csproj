@@ -68,6 +68,10 @@
       <DependentUpon>ClassifyPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="DragDropHelper.cs" />
+    <Compile Include="PlaySoundsHelper.cs" />
+    <Compile Include="PopUpMessage.xaml.cs">
+      <DependentUpon>PopUpMessage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RelayCommand.cs" />
     <Compile Include="HindiWords.xaml.cs">
       <DependentUpon>HindiWords.xaml</DependentUpon>
@@ -114,6 +118,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MediaPlayerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PopUpMessage.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SettingsPage.xaml">
