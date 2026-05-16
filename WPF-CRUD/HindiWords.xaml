@@ -77,253 +77,261 @@
         </Grid>
         <!--#endregion-->
 
-        <!--#region English word-->
-            <Grid  Grid.Row="1" 
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"     
-                   Margin="5,0">
-                <StackPanel Orientation="Horizontal">
-                    <!--#region Click Buttons-->
-                    <Border Width="60"
-                            Height="200"
-                            BorderBrush="Black"
-                            BorderThickness="0"
-                            >
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Button Name="btnCheckEng"
-                                    Style="{StaticResource CircleButtonStyle}" 
-                                    Grid.Row="0" Grid.Column="0">
-                                <Image Width="30" Height="30" Source="/Images/Buttons/question4.png"/>
-                            </Button>
-                            <Button Name="btnSoundEng"
-                                    Style="{StaticResource CircleButtonStyle}" 
-                                    Grid.Row="1" Grid.Column="0">
-                                <Image Width="30" Height="30" Source="/Images/Buttons/sound1.png"/>
-                            </Button>
-                            <Button Name="btnUndoEng" 
-                                    Style="{StaticResource CircleButtonStyle}" 
-                                    Grid.Row="2" Grid.Column="0">
-                                <Image Width="30" Height="30" Source="/Images/Buttons/undo3.png"/>
-                            </Button>
-                            <Button Name="btnResetEng" 
-                                    Style="{StaticResource CircleButtonStyle}" 
-                                    Grid.Row="3" Grid.Column="0">
-                                <Image Width="30" Height="30" Source="/Images/Buttons/wrong5.png"/>
-                            </Button>
+            <Grid 
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Grid.RowSpan="2"
+                >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
 
-                        </Grid>
+                <!--#region Main Image-->
+                <Border 
+                    Margin="10"
+                    HorizontalAlignment="Left"
+                    Width="435"
+                    Height="290"
+                    Background="Transparent"            
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    Grid.Row="0"
+                    >
+                    <Grid AllowDrop="True" Drop="imgMain_Drop">
+                        <TextBlock Text="Drag and drop your image here"     
+                                   FontSize="45"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   Height="Auto" Width="Auto"/>
+                        <Image Name="imgMain" 
+                               Height="Auto" Width="Auto"
+                               />
+                    </Grid>
+                </Border>
 
-                    </Border>
-        <!--#endregion-->
-                    
-                    
-                    <Button Name="btnWord1"  Content="{Binding Path=Word, Mode=TwoWay}"
-                Command="{Binding Path=CopyToClipboard}"                 
-                FontSize="90"     
-                Height="200" Width="350" 
-                HorizontalContentAlignment="Center"
-                VerticalContentAlignment="Center"
-                AllowDrop="True"
-                Drop="btnWord_Drop"
-        />
-                </StackPanel>
-            </Grid>
+                <!--#endregion-->
 
-            <!--#endregion-->
+                <!--#region Create Hindi word-->
 
-            <!--#region Main Image-->
-        <Border 
-            HorizontalAlignment="Center"
-            Width="300"
-            Height="200"
-            Background="Transparent"            
-            BorderBrush="Black"
-            BorderThickness="1"
-            Grid.Row="1"
-            Grid.Column="2"
-            Grid.ColumnSpan="2"
-            >
-                <Grid AllowDrop="True" Drop="imgMain_Drop">
-                <TextBlock Text="Drag and drop your image here"                            
-                           FontSize="45"
-                           TextWrapping="Wrap"
-                           TextAlignment="Center"
-                           Height="200" Width="300"/>
-                <Image Name="imgMain" 
-                       Height="200" Width="300"
-                       
-                        />
-            </Grid>
-        </Border>
-        
-        <!--#endregion-->
+                <Grid  Grid.Row="1"                               
+                   Margin="10,0">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
 
-        <!--#region Create Hindi word-->
-
-            <Grid  Grid.Row="1" 
-                   Grid.Column="4"
-                   Grid.ColumnSpan="2"           
-                   Margin="5,0">
-                <StackPanel Orientation="Horizontal">
-
-                    <Button Name="btnWord"  Content="{Binding Path=Word, Mode=TwoWay}"
-                            Command="{Binding Path=CopyToClipboard}"
-                            Margin="5,0" 
-                            FontSize="90"  
-                            Height="200" Width="350" 
-                            HorizontalContentAlignment="Center"
+                        <Button 
+                            Grid.Row="0" 
+                            Grid.Column="0" Grid.ColumnSpan="4"
+                            Name="btnWord"  Content="{Binding Path=Word, Mode=TwoWay}"
+                            Command="{Binding Path=CopyToClipboard}"                                 
+                            FontSize="75"  
+                            Height="100" Width="435" 
+                            HorizontalAlignment="Left"
+                            HorizontalContentAlignment="Center" 
                             VerticalContentAlignment="Center"
                             AllowDrop="True"
                             Drop="btnWord_Drop"
                             />
 
-                    <!--#region Click Buttons-->
-                    <Border Width="60"
-                            Height="200"
-                            BorderBrush="Black"
-                            BorderThickness="0"
-                            >
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Button Name="btnCheck"
-                                    Style="{StaticResource CircleButtonStyle}" 
-                                    Grid.Row="0" Grid.Column="0"
-                                    >
-                                <Image Width="30" Height="30" Source="/Images/Buttons/question3.png"/>
-                            </Button>
+                <!--#region Click Buttons-->
+                        <Grid Grid.Row="1" Grid.Column="0" 
+                              Grid.ColumnSpan="4"                             
+                              >
 
-                            <Button Name="btnSound"
-                                    Style="{StaticResource CircleButtonStyle}" 
-                                    Grid.Row="1" Grid.Column="0">
-                                <Image Width="30" Height="30" Source="/Images/Buttons/sound2.png"/>
-                            </Button>
+                            <WrapPanel HorizontalAlignment="Center">       
+                            <Button Name="btnCheck" Grid.Column="0" Margin="10,10,30,10"
+                                        Style="{StaticResource CircleButtonStyle}"   
+                                        >
+                                    <Image Width="30" 
+                                           Height="30" 
+                                           Source="/Images/Buttons/question3.png"/>
+                                </Button>
 
-                            <Button Name="btnUndo" Command="{Binding Path=UndoHindiWord}"
-                                    Style="{StaticResource CircleButtonStyle}" 
-                                    Grid.Row="2" Grid.Column="0">
-                                <Image Width="30" Height="30" Source="/Images/Buttons/Undo3.png"/>
-                            </Button>
+                                <Button Name="btnSound" Grid.Column="1" Margin="30,10,30,10"
+                                        Style="{StaticResource CircleButtonStyle}" 
+                                        >
+                                    <Image Width="30" 
+                                           Height="30" 
+                                           Source="/Images/Buttons/sound2.png"/>
+                                </Button>
 
-                            <Button Name="btnReset" Command="{Binding Path=ResetHindiWord}"
-                                    Style="{StaticResource CircleButtonStyle}" 
-                                    Grid.Row="3" Grid.Column="0">
-                                <Image Width="30" Height="30" Source="/Images/Buttons/wrong4.png"/>
-                            </Button>
+                                <Button Name="btnUndo" Grid.Column="2" Margin="30,10,30,10"
+                                        Command="{Binding Path=UndoHindiWord}"
+                                        Style="{StaticResource CircleButtonStyle}" 
+                                        >
+                                    <Image Width="30" 
+                                           Height="30" 
+                                           Source="/Images/Buttons/Undo3.png"/>
+                                </Button>
 
+                                <Button Name="btnReset" Grid.Column="3" Margin="30,10,10,10"
+                                        Command="{Binding Path=ResetHindiWord}"
+                                        Style="{StaticResource CircleButtonStyle}" 
+                                        >
+                                    <Image Width="30" 
+                                           Height="30" 
+                                           Source="/Images/Buttons/wrong4.png"/>
+                                </Button>
+                            </WrapPanel>
                         </Grid>
+                        <!--#endregion-->
 
-                    </Border>
-                    <!--#endregion-->
+                    </Grid>
+                </Grid>
 
-                </StackPanel>   
+                <!--#endregion-->
+
+
+
             </Grid>
+        
 
-            <!--#endregion-->
-
-
-        <Grid 
-            Grid.Row="2"
-            Grid.Column="0"
-            Grid.ColumnSpan="6"
-            Margin="5,5,5,5"
+        <!--#region Consonants-->
+            <Grid Grid.Row="1"
+                  Grid.Column="3"
+                  Grid.ColumnSpan="3">
+                <WrapPanel Orientation="Vertical">
+                    <TextBlock Text="व्यंजन (Consonants)" FontSize="20" Margin="10,10,0,10" />
+                    <ScrollViewer 
+                VerticalScrollBarVisibility="Auto"
+                Margin="0,10,0,0"
+                Height="250"
+                Width="600"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
             >
-            <WrapPanel 
-                Orientation="Horizontal">
-            
-        
-        <!--#region Vowels-->
-        
-        <Grid             
-            Margin="15,15,5,5">
-            <WrapPanel Orientation="Vertical">
-                <TextBlock Text="स्वर (Vowels)" FontSize="20" Margin="0,0,0,10"/>
-                <ScrollViewer 
+                        <StackPanel Margin="10">
+
+                            <ItemsControl ItemsSource="{Binding HindiConsonants}">
+
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid Columns="5"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+
+                                        <Button Name="btnConsonant" 
+                                        Background="AliceBlue"                                        
+                                        Margin="5"
+                                        Height="50"                                        
+                                        PreviewMouseMove="btnLetter_PreviewMouseMove"
+                                        PreviewMouseLeftButtonDown="btnLetter_MouseDown">                                            
+                                                <TextBlock Text="{Binding Letter}" 
+                                                       FontSize="30"
+                                                       FontWeight="Bold"
+                                                       FontFamily="Nirmala UI"
+                                                       HorizontalAlignment="Center"/>                                            
+                                        </Button>
+
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ScrollViewer>
+                </WrapPanel>
+            </Grid>
+        <!--#endregion-->
+
+            <!--#region Vowels-->
+
+            <Grid 
+                Grid.Row="1"
+                Grid.Column="2"
+                Grid.RowSpan="2"            
+            >
+
+
+
+
+
+                <WrapPanel Orientation="Vertical">
+                    <TextBlock Text="स्वर (Vowels)" FontSize="20" Margin="10,10,0,0"/>
+                    <ScrollViewer 
                     VerticalScrollBarVisibility="Auto"
-                    Margin="0,10,0,0"
                     Height="250"
-                    Width="400"
+                    Width="230"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
-                    >
-                    <StackPanel Margin="10">
                         
-                        <ItemsControl ItemsSource="{Binding HindiVowels}">
+                    >
+                        <StackPanel Margin="20">
 
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <UniformGrid Columns="4"/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
+                            <ItemsControl ItemsSource="{Binding HindiVowels}">
 
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid Columns="2"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
 
-                                    <Button  Name="btnVowel" 
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+
+                                        <Button  Name="btnVowel" 
                                              Background="Yellow" 
                                              Margin="5"
-                                             Height="50"                                             
+                                             Height="70" 
+                                                 Width="70"
                                              PreviewMouseMove="btnLetter_PreviewMouseMove"
                                              PreviewMouseLeftButtonDown="btnLetter_MouseDown">
-                                        <StackPanel>
-                                        <Image Source="{Binding ImagePath}"
-                                               Visibility="{Binding HasImage}"/>
 
-                                        <TextBlock Text="{Binding Letter}" 
+                                            <TextBlock Text="{Binding Letter}" 
                                                    FontSize="30"
                                                    FontWeight="Bold"
                                                    FontFamily="Nirmala UI"
                                                    HorizontalAlignment="Center"/>
-                                        </StackPanel>
-                                    </Button>
 
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </StackPanel>
-                </ScrollViewer>
-            </WrapPanel>
-        </Grid>
+                                        </Button>
+
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ScrollViewer>
+                </WrapPanel>
+
+
+            </Grid>
+            <!--#endregion-->
+
+
+            <Grid
+                Grid.Row="2"
+                Grid.Column="2"
+                Grid.ColumnSpan="4">
+
+                <!--#region Matras-->
+
         
-        <!--#endregion-->
-
-        <!--#region Matras-->
-
-        <Grid 
-              Margin="10,15,5,5">
             <WrapPanel Orientation="Vertical">
-                <TextBlock Text="मात्राएँ (Matras)" FontSize="20" Margin="0,0,0,10"/>
+                <TextBlock Text="मात्राएँ (Matras)" FontSize="20" Margin="10,10,0,0"/>
                 <ScrollViewer 
-                VerticalScrollBarVisibility="Auto"
-                Margin="0,10,0,0"
-                Height="250"
-                Width="200"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-            >
-                    <StackPanel Margin="10">
-
+                x:Name="MatraScrollViewer"
+                PreviewMouseWheel="MatraScrollViewer_PreviewMouseWheel"
+                HorizontalScrollBarVisibility="Hidden"
+                VerticalScrollBarVisibility="Hidden"
+                Margin="10,0,0,10"
+                Height="120"
+                Width="800" 
+                    >
                         <ItemsControl ItemsSource="{Binding HindiMatras}">
 
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <UniformGrid Columns="1"/>
+                                    <UniformGrid Rows="1"/>
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
 
@@ -332,8 +340,8 @@
 
                                     <Button Name="btnMatra"                                             
                                             Margin="5"
-                                            Height="126"
-                                            Width="126"                                            
+                                            Height="100"
+                                            Width="100"                                            
                                             PreviewMouseMove="btnLetter_PreviewMouseMove"
                                             PreviewMouseLeftButtonDown="btnLetter_MouseDown"
                                             >
@@ -350,67 +358,16 @@
 
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </StackPanel>
+                        </ItemsControl>                    
                 </ScrollViewer>
             </WrapPanel>
-        </Grid>
-
-        <!--#endregion-->
-
-        <!--#region Consonants-->
         
-        <Grid Margin="10,15,15,5">
-            <WrapPanel Orientation="Vertical">
-            <TextBlock Text="व्यंजन (Consonants)" FontSize="20" />
-            <ScrollViewer 
-                VerticalScrollBarVisibility="Auto"
-                Margin="0,10,0,0"
-                Height="250"
-                Width="600"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-            >
-                <StackPanel Margin="10">             
-                        
-                        <ItemsControl ItemsSource="{Binding HindiConsonants}">
-                        
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <UniformGrid Columns="5"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-
-                                    <Button Name="btnConsonant" 
-                                        Background="AliceBlue"                                        
-                                        Margin="5"
-                                        Height="50"                                        
-                                        PreviewMouseMove="btnLetter_PreviewMouseMove"
-                                        PreviewMouseLeftButtonDown="btnLetter_MouseDown">
-                                        <StackPanel>
-                                            <Image Source="{Binding ImagePath}" 
-                                                   Visibility="{Binding HasImage}"/>
-                                            <TextBlock Text="{Binding Letter}" 
-                                                       FontSize="30"
-                                                       FontWeight="Bold"
-                                                       FontFamily="Nirmala UI"
-                                                       HorizontalAlignment="Center"/>
-                                        </StackPanel>
-                                    </Button>
-
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                </StackPanel>
-            </ScrollViewer>
-            </WrapPanel>
-        </Grid>
 
         <!--#endregion-->
-            </WrapPanel>
+
+        
+        
+            
         </Grid>
         
     </Grid>

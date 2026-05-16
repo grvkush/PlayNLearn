@@ -44,7 +44,7 @@ namespace WPF_CRUD
         private void btnWord_Drop(object sender, DragEventArgs e)
         {             
             DragData item = dragDropHelper.Control_Drop((FrameworkElement)sender, e);
-            if (item != null && DataContext is HindiWordsViewModel vm)
+            if (item != null && item.dataType == "HindiLetter" && DataContext is HindiWordsViewModel vm)
             {
                 vm.Append(((HindiLetter)(item.data)).Letter);
             }
@@ -63,7 +63,7 @@ namespace WPF_CRUD
         private void imgMain_Drop(object sender, DragEventArgs e)
         {
             DragData imageData = dragDropHelper.Control_Drop((FrameworkElement)sender, e);
-            if (imageData != null)
+            if (imageData != null && imageData.dataType == "ImageData")
             {
                 imgMain.Source = new BitmapImage(new Uri(((ImageData)(imageData.data)).ImagePath, UriKind.Relative)); 
             }
@@ -72,6 +72,12 @@ namespace WPF_CRUD
         private void MyScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             dragDropHelper.Preview_MouseWheel((FrameworkElement)sender, e);
-        }        
+        }
+
+        private void MatraScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            dragDropHelper.Preview_MouseWheel((FrameworkElement)sender, e);
+
+        }
     }
 }
