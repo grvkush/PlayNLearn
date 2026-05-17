@@ -1,0 +1,19 @@
+# Build folders
+bin/
+obj/
+
+# Visual Studio
+.vs/
+
+# User-specific files
+*.user
+*.suo
+
+# Rider
+.idea/
+
+# Resharper
+_ReSharper*/
+
+# Logs
+*.log

@@ -238,6 +238,7 @@
     <Resource Include="Images\Buttons\sound3.png" />
     <Resource Include="Images\Buttons\question1.png" />
     <Resource Include="Images\Buttons\wrong6.png" />
+    <Content Include=".gitignore" />
     <Content Include="Sounds\correct.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
