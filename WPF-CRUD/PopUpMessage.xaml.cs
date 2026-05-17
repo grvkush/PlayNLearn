@@ -19,10 +19,12 @@ namespace WPF_CRUD
     /// </summary>
     public partial class PopUpMessage : Window
     {
-        public PopUpMessage(string message)
+        public PopUpMessage(PopUpData message)
         {
             InitializeComponent();
-            txtMessage.Text = message;
+            txtMessage.Text = message.Message;
+            imgIcon.Source = new BitmapImage(new Uri(message.ImgPath, UriKind.RelativeOrAbsolute));
+            brdPopUp.Background = message.Background;
         }
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
@@ -30,7 +32,7 @@ namespace WPF_CRUD
             Close();
         }
 
-        public static void Show(string message)
+        public static void Show(PopUpData message)
         {
             PopUpMessage box = new PopUpMessage(message);
             box.ShowDialog();

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace WPF_CRUD
 {
@@ -629,6 +630,9 @@ namespace WPF_CRUD
 
             Word = "";
             MainImage = Images.FirstOrDefault();
+            
+
+             
 
             copyToClipboardCommand = new RelayCommand(CopyToClipboardMethod);
             resetHindiWordCommand = new RelayCommand(ResetWord);
@@ -723,18 +727,36 @@ namespace WPF_CRUD
                 if (Word == MainImage.HindiName)
                 {
                     playSoundsHelper.PlayCorrectSound();
-                    PopUpMessage.Show("Correct! The word matches the image.");
+                    PopUpMessage.Show(new PopUpData()
+                    {
+                        Title = "Correct",
+                        Message = "That's correct!",
+                        ImgPath = "/Images/Buttons/correct1.png",
+                        Background = Brushes.Beige
+                    });
                     
                 }
                 else
                 {
                     playSoundsHelper.PlayWrongSound();
-                    PopUpMessage.Show("Incorrect. Try again!");                    
+                    PopUpMessage.Show(new PopUpData()
+                    {
+                        Title = "Incorrect",
+                        Message = "That's incorrect!",
+                        ImgPath = "/Images/Buttons/wrong1.png",
+                        Background = Brushes.Beige
+                    });                    
                 }
             }
             else
             {
-                PopUpMessage.Show("Please select an image and enter a word.");
+                PopUpMessage.Show(new PopUpData
+                {
+                    Title = "Error",
+                    Message = "Please select an image and enter a word.",
+                    ImgPath = "/Images/Buttons/question1.png",
+                    Background = Brushes.Beige
+                });
             }
         }
 
@@ -830,5 +852,12 @@ namespace WPF_CRUD
         public string Description { get; set; }
         [DefaultValue("No Hindi Name")]
         public string HindiName { get; set; }
+    }
+    public class PopUpData
+    {
+        public string Title { get; set; }
+        public string Message { get; set; }
+        public string ImgPath { get; set; }
+        public SolidColorBrush Background { get; set; }
     }
 }

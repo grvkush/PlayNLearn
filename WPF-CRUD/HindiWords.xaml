@@ -149,21 +149,24 @@
                         <Grid Grid.Row="1" Grid.Column="0" 
                               Grid.ColumnSpan="4"                             
                               >
-                            <WrapPanel HorizontalAlignment="Center">       
-                            <Button Name="btnCheck" Grid.Column="0" Margin="10,10,30,10"
+                            <WrapPanel HorizontalAlignment="Center">
+                                <Button Name="btnCheck" Grid.Column="0" Margin="10,10,30,10"
                                     Command="{Binding Path=CheckWordCommand}"
-                                        Style="{StaticResource CircleButtonStyle}"   
+                                        Style="{StaticResource CircleButtonStyle}" 
                                         >
-                                    <Image Width="30" 
-                                           Height="30" 
-                                           Source="/Images/Buttons/question3.png"/>
+                                    <Image Width="50" 
+                                           Height="50" 
+                                           Source="/Images/Buttons/question1.png"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"                                           
+                                           />
                                 </Button>
 
                                 <Button Name="btnSound" Grid.Column="1" Margin="30,10,30,10"
                                         Style="{StaticResource CircleButtonStyle}" 
                                         >
-                                    <Image Width="30" 
-                                           Height="30" 
+                                    <Image Width="40" 
+                                           Height="40" 
                                            Source="/Images/Buttons/sound2.png"/>
                                 </Button>
 
@@ -171,18 +174,20 @@
                                         Command="{Binding Path=UndoHindiWordCommand}"
                                         Style="{StaticResource CircleButtonStyle}" 
                                         >
-                                    <Image Width="30" 
-                                           Height="30" 
-                                           Source="/Images/Buttons/Undo3.png"/>
+                                    <Image Width="40" 
+                                           Height="40" 
+                                           Source="/Images/Buttons/Undo2.png"/>
                                 </Button>
 
                                 <Button Name="btnReset" Grid.Column="3" Margin="30,10,10,10"
                                         Command="{Binding Path=ResetHindiWordCommand}"
                                         Style="{StaticResource CircleButtonStyle}" 
                                         >
-                                    <Image Width="30" 
-                                           Height="30" 
-                                           Source="/Images/Buttons/wrong4.png"/>
+                                    <Image Width="50" 
+                                           Height="50" 
+                                           Source="/Images/Buttons/wrong6.png"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
                                 </Button>
                             </WrapPanel>
                         </Grid>

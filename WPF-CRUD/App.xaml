@@ -6,15 +6,15 @@
     <Application.Resources>        
             <Style x:Key="CircleButtonStyle" 
                 TargetType="Button">
-                <Setter Property="Width" Value="40"/>
-                <Setter Property="Height" Value="40"/>
+                <Setter Property="Width" Value="50"/>
+                <Setter Property="Height" Value="50"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border CornerRadius="15"
-                            Background="Black"
+                            <Border CornerRadius="35"
+                            Background="Beige"
                             BorderBrush="Black"
-                            BorderThickness="1">
+                            BorderThickness="0">
 
                                 <ContentPresenter
                             HorizontalAlignment="Center"
@@ -24,5 +24,39 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+        <Style x:Key="RectangleButtonStyle" 
+               TargetType="Button">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="15"
+                            Background="Cyan"
+                            BorderBrush="Black"
+                            BorderThickness="2">
+                            <ContentPresenter
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="PopUpButtonStyle" 
+       TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="15"
+                    BorderBrush="Black">                            
+                            <ContentPresenter
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>

@@ -218,7 +218,6 @@
     <Resource Include="Images\Category\Transport\bus.png" />
     <Resource Include="Images\Buttons\correct1.png" />
     <Resource Include="Images\Buttons\correct2.png" />
-    <Resource Include="Images\Buttons\question1.png" />
     <Resource Include="Images\Buttons\Reset1.png" />
     <Resource Include="Images\Buttons\sound1.png" />
     <Resource Include="Images\Buttons\sound2.png" />
@@ -236,6 +235,9 @@
     <Resource Include="Images\Buttons\correct5.png" />
     <Resource Include="Images\Buttons\question4.png" />
     <Resource Include="Images\Buttons\wrong5.png" />
+    <Resource Include="Images\Buttons\sound3.png" />
+    <Resource Include="Images\Buttons\question1.png" />
+    <Resource Include="Images\Buttons\wrong6.png" />
     <Content Include="Sounds\correct.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
