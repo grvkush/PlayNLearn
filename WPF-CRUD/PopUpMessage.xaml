@@ -29,7 +29,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-
+            
             <Image x:Name="imgIcon" Grid.Row="0"
                    Width="130"
                    Height="130"

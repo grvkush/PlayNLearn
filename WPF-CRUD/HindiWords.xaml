@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="HindiWords">
-    
+    <Viewbox>
     <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
         <Grid>
         <Grid.RowDefinitions>
@@ -101,16 +101,16 @@
                     Grid.Row="0"
                     >
                     <Grid AllowDrop="True" Drop="imgMain_Drop">
-                        <TextBlock Text="Drag and drop your image here"     
-                                   FontSize="45"
-                                   TextWrapping="Wrap"
-                                   TextAlignment="Center"
-                                   Height="Auto" Width="Auto"/>
-                        <Image Name="imgMain" 
+                            <Image Name="imgMain"
                                Source="{Binding Path=MainImage.ImagePath, Mode=TwoWay}"
                                Height="Auto" Width="Auto"
-                               />
-                    </Grid>
+                               Cursor="Hand"
+                               >
+                                <Image.InputBindings>
+                                    <MouseBinding MouseAction="LeftClick" Command="{Binding Path=ShowNameHintCommand}"/>
+                                </Image.InputBindings>
+                            </Image>
+                        </Grid>
                 </Border>
 
                 <!--#endregion-->
@@ -136,7 +136,7 @@
                             Grid.Column="0" Grid.ColumnSpan="4"
                             Name="btnWord"  Content="{Binding Path=Word, Mode=TwoWay}"
                             Command="{Binding Path=CopyToClipboardCommand}"                                 
-                            FontSize="75"  
+                            FontSize="60"  
                             Height="100" Width="435" 
                             HorizontalAlignment="Left"
                             HorizontalContentAlignment="Center" 
@@ -163,6 +163,7 @@
                                 </Button>
 
                                 <Button Name="btnSound" Grid.Column="1" Margin="30,10,30,10"
+                                        Command="{Binding Path=SpeakWordCommand}"
                                         Style="{StaticResource CircleButtonStyle}" 
                                         >
                                     <Image Width="40" 
@@ -366,4 +367,5 @@
             
     </Grid>
     </ScrollViewer>
+    </Viewbox>
 </Page>

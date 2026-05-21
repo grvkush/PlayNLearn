@@ -15,6 +15,16 @@ namespace WPF_CRUD
 {
     public class HindiWordsViewModel : INotifyPropertyChanged
     {
+        AzureSpeechService azureSpeechService;
+        public ObservableCollection<HindiLetter> HindiConsonants { get; set; }
+        public ObservableCollection<HindiLetter> HindiVowels { get; set; }
+        public ObservableCollection<HindiLetter> HindiMatras { get; set; }
+        public ObservableCollection<ImageData> Images { get; set; }
+        public ObservableCollection<string> ImageCategories { get; set; }
+        private Stack<string> wordHistory = new Stack<string>();
+        PlaySoundsHelper playSoundsHelper;
+
+
         #region PropertyChangedEventHandler_Implementation
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName)
@@ -33,6 +43,7 @@ namespace WPF_CRUD
         #endregion
         public HindiWordsViewModel()
         {
+            azureSpeechService = new AzureSpeechService();
             playSoundsHelper = new PlaySoundsHelper();
 
             HindiConsonants = new ObservableCollection<HindiLetter>()
@@ -266,6 +277,15 @@ namespace WPF_CRUD
 
             Images = new ObservableCollection<ImageData>()
             {
+                // Empty image data for default selection
+                new ImageData()
+                {
+                    ImagePath = "/Images/Category/NoImage.png",
+                    Name = "NoImage",
+                    Category = "",
+                    Description = "Please select an image from the categories.",
+                    HindiName = ""
+                },
                 #region Category: Animal (cow, lion, rhino, sheep, tiger, wolf)
                 new ImageData()
                     {
@@ -630,17 +650,16 @@ namespace WPF_CRUD
 
             Word = "";
             MainImage = Images.FirstOrDefault();
-            
-
-             
 
             copyToClipboardCommand = new RelayCommand(CopyToClipboardMethod);
             resetHindiWordCommand = new RelayCommand(ResetWord);
             undoHindiWordCommand = new RelayCommand(Undo);
             checkWordCommand = new RelayCommand(CheckWord);
-
+            speakWordCommand = new RelayCommand(SpeakWord);
+            showNameHintCommand = new RelayCommand(ShowNameHint);
         }
 
+        #region Methods
         public void UpdateMainImage(ImageData imageData)
         {
             if (imageData != null)
@@ -659,6 +678,26 @@ namespace WPF_CRUD
         {
             wordHistory.Push(Word);
         }
+
+        private ObservableCollection<ImageData> FilterImages()
+        {
+            ObservableCollection<ImageData> imgs = new ObservableCollection<ImageData>();
+            foreach (var item in Images)
+            {
+                if (item.Category == SelectedCategory)
+                {
+                    imgs.Add(item);
+                }
+            }
+            return imgs;
+        }
+
+        private void OnCategoryChanged()
+        {
+            ShowImages = FilterImages();
+        }
+
+        #endregion
 
         #region CopyToClipboardCommand
 
@@ -763,6 +802,47 @@ namespace WPF_CRUD
 
         #endregion
 
+        #region ShowNameHintCommand
+        private RelayCommand showNameHintCommand;
+
+        public RelayCommand ShowNameHintCommand
+        {
+            get { return showNameHintCommand; }
+        }
+
+        private void ShowNameHint()
+        {
+            if (MainImage != null && !string.IsNullOrEmpty(MainImage.HindiName))
+            {
+                PopUpMessage.Show(new PopUpData()
+                {
+                    Title = "Hint",
+                    Message = $"' {MainImage.HindiName} '",
+                    ImgPath = MainImage.ImagePath,
+                    Background = Brushes.LightGreen,
+                    ShowOkButton = false
+                });
+            }
+        }
+
+        #endregion
+        #region SpeakWordCommand
+        private RelayCommand speakWordCommand;
+
+        public RelayCommand SpeakWordCommand
+        {
+            get { return speakWordCommand; }
+        }
+
+        private async void SpeakWord()
+        {
+            if (!string.IsNullOrEmpty(Word))
+            {
+                await azureSpeechService.SpeakAsync(MainImage.HindiName);
+            }
+        }
+        #endregion
+
         #region Properties
         private string word;
         public string Word
@@ -782,7 +862,6 @@ namespace WPF_CRUD
             get { return mainImage; }
             set { mainImage = value; OnPropertyChanged("MainImage"); }
         }
-
 
         private string selectedCategory;
         public string SelectedCategory
@@ -807,32 +886,6 @@ namespace WPF_CRUD
 
         #endregion
 
-        public ObservableCollection<HindiLetter> HindiConsonants { get; set; }
-        public ObservableCollection<HindiLetter> HindiVowels { get; set; }
-        public ObservableCollection<HindiLetter> HindiMatras { get; set; }
-        public ObservableCollection<ImageData> Images { get; set; }
-        public ObservableCollection<string> ImageCategories { get; set; }
-
-        private Stack<string> wordHistory = new Stack<string>();
-        PlaySoundsHelper playSoundsHelper;
-
-        private ObservableCollection<ImageData> FilterImages()
-        {
-            ObservableCollection<ImageData> imgs = new ObservableCollection<ImageData>();
-            foreach(var item in Images)
-            {
-                if(item.Category == SelectedCategory)
-                {
-                    imgs.Add(item);
-                }
-            }
-            return imgs;
-        }
-
-        private void OnCategoryChanged()
-        {
-            ShowImages = FilterImages();
-        }
     }
     public class HindiLetter
     {
@@ -859,5 +912,6 @@ namespace WPF_CRUD
         public string Message { get; set; }
         public string ImgPath { get; set; }
         public SolidColorBrush Background { get; set; }
+        public bool ShowOkButton { get; set; } = true;
     }
 }
