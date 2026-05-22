@@ -87,7 +87,7 @@ namespace WPF_CRUD
                 box.txtMessage.FontSize = 40; // Increase font size for auto-close messages
                 box.imgIcon.Width = 300;
                 box.imgIcon.Height = 200;
-                box.StartAutoCloseTimer(5); // Auto-close after 5 seconds
+                box.StartAutoCloseTimer(3); // Auto-close after 5 seconds
             }
 
             box.ShowDialog();

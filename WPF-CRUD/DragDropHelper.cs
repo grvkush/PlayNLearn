@@ -61,7 +61,7 @@ namespace WPF_CRUD
             ScrollViewer scrollViewer = sender as ScrollViewer;
 
             scrollViewer.ScrollToHorizontalOffset(
-                scrollViewer.HorizontalOffset + (e.Delta / 3));
+                scrollViewer.HorizontalOffset - (e.Delta / 3));
 
             e.Handled = true;
         }

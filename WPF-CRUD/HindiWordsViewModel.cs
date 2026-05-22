@@ -826,6 +826,7 @@ namespace WPF_CRUD
         }
 
         #endregion
+
         #region SpeakWordCommand
         private RelayCommand speakWordCommand;
 
@@ -838,7 +839,8 @@ namespace WPF_CRUD
         {
             if (!string.IsNullOrEmpty(Word))
             {
-                await azureSpeechService.SpeakAsync(MainImage.HindiName);
+                //await azureSpeechService.SpeakAsync(MainImage.HindiName);
+                await azureSpeechService.SpeakAsync(Word);
             }
         }
         #endregion
