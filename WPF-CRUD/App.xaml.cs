@@ -15,8 +15,11 @@ namespace WPF_CRUD
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            HomePage wnd = new HomePage();  
+            HomePage wnd = new HomePage();
+            YesNo page = new YesNo();
+            
             wnd.Show();
+            wnd.MainFrame.Navigate(page);
         }
     }
 }

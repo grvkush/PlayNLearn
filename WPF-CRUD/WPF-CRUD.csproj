@@ -130,6 +130,7 @@
     <Compile Include="AddSub.xaml.cs">
       <DependentUpon>AddSub.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddSubViewModel.cs" />
     <Compile Include="AzureSpeechService.cs" />
     <Compile Include="ClassifyPage.xaml.cs">
       <DependentUpon>ClassifyPage.xaml</DependentUpon>
@@ -138,6 +139,9 @@
     <Compile Include="PlaySoundsHelper.cs" />
     <Compile Include="PopUpMessage.xaml.cs">
       <DependentUpon>PopUpMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PopUpSelect.xaml.cs">
+      <DependentUpon>PopUpSelect.xaml</DependentUpon>
     </Compile>
     <Compile Include="RelayCommand.cs" />
     <Compile Include="HindiWords.xaml.cs">
@@ -152,6 +156,9 @@
     </Compile>
     <Compile Include="SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="YesNo.xaml.cs">
+      <DependentUpon>YesNo.xaml</DependentUpon>
     </Compile>
     <Page Include="AboutPage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -191,7 +198,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PopUpSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="YesNo.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -307,6 +322,10 @@
     <Resource Include="Images\Buttons\wrong6.png" />
     <Content Include=".gitignore" />
     <Resource Include="Images\Category\NoImage.png" />
+    <Resource Include="Images\Operators\addition.png" />
+    <Resource Include="Images\Operators\division.png" />
+    <Resource Include="Images\Operators\multiplication.png" />
+    <Resource Include="Images\Operators\subtraction.png" />
     <Content Include="Sounds\correct.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

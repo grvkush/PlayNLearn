@@ -11,24 +11,23 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Windows.Threading;
 
 namespace WPF_CRUD
 {
     /// <summary>
-    /// Interaction logic for PopUpMessage.xaml
+    /// Interaction logic for PopUpSelect.xaml
     /// </summary>
-    public partial class PopUpMessage : Window
+    public partial class PopUpSelect : Window
     {
-        private DispatcherTimer autoCloseTimer;
+        private DragDropHelper dragDropHelper = new DragDropHelper();
         private bool _isClosing = false;
 
-        public PopUpMessage(PopUpData message)
+        public PopUpSelect(PopUpSelectData data)
         {
             InitializeComponent();
-            txtMessage.Text = message.Message;
-            imgIcon.Source = new BitmapImage(new Uri(message.ImgPath, UriKind.RelativeOrAbsolute));
-            brdPopUp.Background = message.Background;
+            Title = data.Title;
+            txtMessage.Text = data.Message;
+            brdPopUp.Background = data.Background;
 
             // Make background fade
             Owner = Application.Current.MainWindow;
@@ -41,12 +40,13 @@ namespace WPF_CRUD
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
             ClosePopup();
-        }        
+        }
 
         private void ClosePopup()
         {
             if (_isClosing) return;
             _isClosing = true;
+
             // Restore owner opacity
             if (Owner != null)
             {
@@ -65,25 +65,38 @@ namespace WPF_CRUD
             }
         }
 
-        public static void Show(PopUpData message)
+        public void Show(PopUpSelectData data)
         {
-            PopUpMessage box = new PopUpMessage(message);
+            PopUpSelect box = new PopUpSelect(data);
             box.FadeBackground();
 
-            if (message.ShowOkButton)
+            if (data.ShowOkButton)
             {
                 box.btnOk.Visibility = Visibility.Visible;
+                
+                if (data.OperationType == "Enter")
+                {
+                    box.MyScrollViewer.Visibility = Visibility.Collapsed;
+                    box.txtInput.Visibility = Visibility.Visible;
+                }
+                else if (data.OperationType == "Select")
+                {
+                    box.txtInput.Visibility = Visibility.Collapsed;
+                    box.MyScrollViewer.Visibility = Visibility.Visible;
+                    box.icOptions.ItemsSource = data.Options;
+                }
             }
             else
             {
                 box.btnOk.Visibility = Visibility.Collapsed;
-                box.txtMessage.FontSize = 40; // Increase font size for auto-close messages
-                box.imgIcon.Width = 300;
-                box.imgIcon.Height = 200;
-                //box.StartAutoCloseTimer(3); // Auto-close after 5 seconds
             }
 
             box.ShowDialog();
+        }
+
+        private void MyScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            dragDropHelper.Preview_MouseWheel((FrameworkElement)sender, e);
         }
     }
 }

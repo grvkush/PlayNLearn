@@ -8,6 +8,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AddSub">
+    <Viewbox>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"></RowDefinition>
@@ -41,6 +42,7 @@
                         Grid.Row="0" 
                         Grid.Column="0"
                         Grid.RowSpan="2"
+                    Command="{Binding Path=OperatorCommand}"
                         Content="+"
                         FontSize="100"
                         VerticalContentAlignment="Top">
@@ -49,6 +51,7 @@
             <Button x:Name="btnFirstNum" 
                     Grid.Row="0" 
                     Grid.Column="1"
+                    Command="{Binding Path=FirstNumberCommand}"
                     Margin="5,5"
                     Content="FN"
                     FontSize="50"
@@ -57,6 +60,7 @@
             <Button x:Name="btnSecondNum"
                     Grid.Row="1" 
                     Grid.Column="1"
+                    Command="{Binding Path=SecondNumberCommand}"
                     Margin="5,5"
                     Content="SN"
                     FontSize="50"
@@ -71,7 +75,10 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Border Grid.Row="0" BorderBrush="Black" BorderThickness="5" Width="350" />
-            <Button Grid.Row="1" Content="Add/Sub" FontSize="70"></Button>
+            <Button Grid.Row="1" 
+                    Command="{Binding Path=OperatorCommand}"
+                    Content="Add/Sub" 
+                    FontSize="70"></Button>
                 
         </Grid>
         <!--#endregion Results -->
@@ -115,4 +122,5 @@
         <!--#endregion Counting icons -->
         
     </Grid>
+    </Viewbox>
 </Page>

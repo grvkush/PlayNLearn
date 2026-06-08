@@ -16,31 +16,19 @@ using System.Windows.Shapes;
 namespace WPF_CRUD
 {
     /// <summary>
-    /// Interaction logic for AddSub.xaml
+    /// Interaction logic for YesNo.xaml
     /// </summary>
-    public partial class AddSub : Page
+    public partial class YesNo : Page
     {
-        DragDropHelper dragDropHelper;
-        public AddSub()
+        private DragDropHelper dragDropHelper = new DragDropHelper();
+        public YesNo()
         {
             InitializeComponent();
-            DataContext = new AddSubViewModel();
-            dragDropHelper = new DragDropHelper();
+            DataContext = new HindiWordsViewModel();
         }
-
         private void MyScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             dragDropHelper.Preview_MouseWheel((FrameworkElement)sender, e);
-        }
-
-        private void imgCountingIcon_MouseMove(object sender, MouseEventArgs e)
-        {
-            dragDropHelper.Control_MouseMove((FrameworkElement)sender, e, "ImageData");
-        }
-
-        private void imgCountingIcon_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            dragDropHelper.Control_MouseDown(e);
         }
     }
 }

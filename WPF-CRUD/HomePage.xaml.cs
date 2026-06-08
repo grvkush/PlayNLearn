@@ -51,5 +51,10 @@ namespace WPF_CRUD
         {
             MainFrame.Navigate(new AddSub());
         }
+
+        private void btnYesNo_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new YesNo());
+        }
     }
 }

@@ -904,6 +904,7 @@ namespace WPF_CRUD
         public string ImagePath { get; set; }
         public string Name { get; set; }   
         public string Category { get; set; }
+        [DefaultValue("")]
         public string Description { get; set; }
         [DefaultValue("No Hindi Name")]
         public string HindiName { get; set; }

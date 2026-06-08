@@ -12,8 +12,9 @@
         <StackPanel Grid.Row="0" Orientation="Horizontal" Background="LightGray" Margin="0,0,0,10">
             <Button Name="btnHome" Content="Home" Width="100" Height="40" Margin="10,5" Click="BtnHome_Click"/>
             <Button Name="btnAddSub" Content="Add Sub" Width="100" Height="40" Margin="10,5" Click="btnAddSub_Click"/>
-            <Button Name="btnClassify" Content="Classify" Width="100" Height="40" Margin="10,5" Click="BtnClassify_Click"/>
+            <Button Name="btnYesNo" Content="Yes OR No" Width="120" Height="40" Margin="10,5" Click="btnYesNo_Click"/>
             <Button Name="btnHindiWord" Content="Hindi Words" Width="120" Height="40" Margin="10,5" Click="btnHindiWord_Click"/>
+            <Button Name="btnClassify" Content="Classify" Width="100" Height="40" Margin="10,5" Click="BtnClassify_Click"/>
             <Button Name="btnMediaPlayer" Content="Media Player" Width="120" Height="40" Margin="10,5" Click="BtnMediaPlayer_Click"/>
             <Button Name="btnAbout" Content="About" Width="100" Height="40" Margin="10,5" Click="BtnAbout_Click"/>
             <Button Name="btnSettings" Content="Settings" Width="100" Height="40" Margin="10,5" Click="BtnSettings_Click"/>
